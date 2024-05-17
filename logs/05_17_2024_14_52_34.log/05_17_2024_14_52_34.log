@@ -1,0 +1,184 @@
+[ 2024-05-17 14:52:34,517 ] 224 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.13.21.157:5000
+[ 2024-05-17 14:52:34,520 ] 224 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2024-05-17 14:52:50,021 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:52:50] "GET / HTTP/1.1" 200 -
+[ 2024-05-17 14:52:50,076 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:52:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[ 2024-05-17 14:52:52,539 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:52:52] "GET / HTTP/1.1" 200 -
+[ 2024-05-17 14:53:11,312 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:53:11] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-05-17 14:53:26,446 ] 1744 application - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 2529, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\application.py", line 29, in predict_datapoint
+    reading_score=float(request.form.get('writing_score')),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: ''
+[ 2024-05-17 14:53:26,462 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:53:26] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-05-17 14:53:35,614 ] 1744 application - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 59, in load_object
+    with open(file_path, "rb") as file_obj:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'model.pkl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 19, in predict
+    model=load_object(file_path=model_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 63, in load_object
+    raise CustomException(e, sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 2529, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\application.py", line 39, in predict_datapoint
+    results=predict_pipeline.predict(pred_df)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 27, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py] line number [19] error message[Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']]
+[ 2024-05-17 14:53:35,615 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:53:35] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-05-17 14:53:58,077 ] 1744 application - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 59, in load_object
+    with open(file_path, "rb") as file_obj:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'model.pkl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 19, in predict
+    model=load_object(file_path=model_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 63, in load_object
+    raise CustomException(e, sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 2529, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\application.py", line 39, in predict_datapoint
+    results=predict_pipeline.predict(pred_df)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 27, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py] line number [19] error message[Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']]
+[ 2024-05-17 14:53:58,079 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:53:58] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-05-17 14:55:15,667 ] 1744 application - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 59, in load_object
+    with open(file_path, "rb") as file_obj:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'model.pkl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 19, in predict
+    model=load_object(file_path=model_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 63, in load_object
+    raise CustomException(e, sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 2529, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\application.py", line 39, in predict_datapoint
+    results=predict_pipeline.predict(pred_df)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 27, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py] line number [19] error message[Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']]
+[ 2024-05-17 14:55:15,668 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:55:15] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-05-17 14:55:27,303 ] 1744 application - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 59, in load_object
+    with open(file_path, "rb") as file_obj:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'model.pkl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 19, in predict
+    model=load_object(file_path=model_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\utils.py", line 63, in load_object
+    raise CustomException(e, sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 2529, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\anaconda3\Lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\application.py", line 39, in predict_datapoint
+    results=predict_pipeline.predict(pred_df)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py", line 27, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [C:\Users\Domagoj\git_repo\src\pipeline\predict_pipeline.py] line number [19] error message[Error occured in python script name [C:\Users\Domagoj\git_repo\src\utils.py] line number [59] error message[[Errno 2] No such file or directory: 'model.pkl']]
+[ 2024-05-17 14:55:27,305 ] 224 werkzeug - INFO - 127.0.0.1 - - [17/May/2024 14:55:27] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
